@@ -14,7 +14,10 @@ protected:
 public:
     Pieces(Color color) : m_color(color);
     virtual ~Pieces() = default;
-
+    Color getColor() const
+    {
+        return m_color;
+    }
     virtual char getSymbol() const = 0;
     
     virtual std::vector<Position> getMoves(const Position& from, const Board& board) const = 0;

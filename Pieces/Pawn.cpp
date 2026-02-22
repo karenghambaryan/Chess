@@ -47,13 +47,13 @@ std::vector<Position> Pawn::getMoves(const Position& from,const Board& board) co
         {
             Position capture;
             capture.row = from.row + direction;
-            capture.col = from.col + captureCols[i]
+            capture.col = from.col + captureCols[i];
 
         if (!capture.isValid())
         {
             continue;
         }
-        Piece* target = board.getPiece(capture);
+        Pieces* target = board.getPiece(capture);
 
         if (target && target->getColor() != m_color)
         {

@@ -11,6 +11,6 @@ struct Move
     Position m_to;
     Piece* Tex;//որ եթե քայլը valid չէ հետ բերենք
     Move(Position from, Position to) : m_from(from) , m_to(to) ,Tex(nullptr){}
-}
+};
 
-#endif;
+#endif

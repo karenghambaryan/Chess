@@ -1,9 +1,9 @@
 #include "Queen.h"
-#include "../Board.h"
+#include "Chess/Core/Board.h"
 
 char Queen::getSymbol() const
 {
-    if (color == Color::White)
+    if (m_color == Color::White)
         return 'Q';
     else
         return 'q';
