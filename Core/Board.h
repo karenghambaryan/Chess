@@ -5,8 +5,7 @@
 #include "Position.h"
 #include "Move.h"
 #include "Color.h"
-
-class Pieces;
+#include "Pieces/Pieces.h"
 
 class Board
 {
@@ -22,6 +21,10 @@ class Board
         Position findKing(Color color) const;
         void print() const;
         bool isCheck(Color color) const;
+        bool areKingsAdjacent() const;
+        friend class CheckmateDetector;
+        friend class MoveGenerator;
+        friend class CheckDetector;
 };
 
 #endif

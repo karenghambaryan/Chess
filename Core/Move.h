@@ -3,14 +3,14 @@
 
 #include "Position.h"
 
-class Piece;
+class Pieces; 
 
 struct Move
 {
     Position m_from;
     Position m_to;
-    Piece* Tex;//որ եթե քայլը valid չէ հետ բերենք
-    Move(Position from, Position to) : m_from(from) , m_to(to) ,Tex(nullptr){}
+    Pieces* piece; 
+    Move(Position from, Position to) : m_from(from) , m_to(to) , piece(nullptr) {}
 };
 
 #endif

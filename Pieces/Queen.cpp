@@ -1,5 +1,5 @@
 #include "Queen.h"
-#include "Chess/Core/Board.h"
+#include "Core/Board.h"
 
 char Queen::getSymbol() const
 {

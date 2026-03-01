@@ -1,18 +1,19 @@
-#ifdef PIECES_H
+#ifndef PIECES_H
 #define PIECES_H
 
 #include <vector>
-#include "Chess/Core/Color.h"
-#include "Chess/Core/Position.h"
+#include "Core/Color.h"
+#include "Core/Position.h"
 
-class Board;
+class Board; 
 
 class Pieces
 {
 protected:
     Color m_color;
 public:
-    Pieces(Color color) : m_color(color);
+    Pieces(Color color) : m_color(color) {}
+    Pieces() = default;
     virtual ~Pieces() = default;
     Color getColor() const
     {
@@ -22,4 +23,4 @@ public:
     
     virtual std::vector<Position> getMoves(const Position& from, const Board& board) const = 0;
 };
-#endif;
+#endif

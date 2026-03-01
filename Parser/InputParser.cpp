@@ -3,12 +3,12 @@
 #include <iostream>
 #include <sstream>
 
-#include "Chess/Pieces/King.h"
-#include "Chess/Pieces/Queen.h"
-#include "Chess/Pieces/Rook.h"
-#include "Chess/Pieces/Bishop.h"
-#include "Chess/Pieces/Knight.h"
-#include "Chess/Pieces/Pawn.h"
+#include "Pieces/King.h"
+#include "Pieces/Queen.h"
+#include "Pieces/Rook.h"
+#include "Pieces/Bishop.h"
+#include "Pieces/Knight.h"
+#include "Pieces/Pawn.h"
 
 void InputParser::readPieces(Board& board)
 {
@@ -34,11 +34,9 @@ void InputParser::readPieces(Board& board)
         std::string typeStr;
         std::string square;
 
-        iss >> colorStr >> typeStr >> square;
-
-        if (colorStr.empty() || typeStr.empty() || square.empty())
+        if (!(iss >> colorStr >> typeStr >> square))
         {
-            std::cout << "Invalid input format\n";
+            std::cout << "Ինչ-որ բան սխալ է;\n";
             continue;
         }
 
@@ -46,7 +44,6 @@ void InputParser::readPieces(Board& board)
 
         if (!pos.isValid())
         {
-            std::cout << "Invalid position\n";
             continue;
         }
 
@@ -54,7 +51,14 @@ void InputParser::readPieces(Board& board)
 
         if (!piece)
         {
-            std::cout << "Invalid piece type\n";
+            std::cout << "տառասխալ։ հետևեք օրինակին\n";
+            continue;
+        }
+
+        Pieces* existingPiece = board.getPiece(pos);
+        if (existingPiece)
+        {
+            std::cout << "Square " << square << " is already occupied\n";
             continue;
         }
 
@@ -65,10 +69,20 @@ void InputParser::readPieces(Board& board)
 Position InputParser::parsePosition(const std::string& square)
 {
     if (square.size() != 2)
+    {
+        std::cout << "Invalid square format. Use format like 'a1', 'h8', etc.\n";
         return Position{ -1, -1 };
+    }
 
     char file = square[0];   
     char rank = square[1];   
+
+    // Validate file (a-h) and rank (1-8)
+    if (file < 'a' || file > 'h' || rank < '1' || rank > '8')
+    {
+        std::cout << "Invalid square. File must be a-h, rank must be 1-8\n";
+        return Position{ -1, -1 };
+    }
 
     int col = file - 'a';
     int row = 8 - (rank - '0');

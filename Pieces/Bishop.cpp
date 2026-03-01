@@ -1,5 +1,5 @@
 #include "Bishop.h"
-#include "Chess/Core/Board.h"
+#include "Core/Board.h"
 
 char Bishop::getSymbol() const
 {

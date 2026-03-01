@@ -1,5 +1,5 @@
 #include "Pawn.h"
-#include "Chess/Core/Board.h"
+#include "Core/Board.h"
 
 char Pawn::getSymbol() const
 {

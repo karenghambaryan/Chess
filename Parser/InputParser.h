@@ -3,7 +3,7 @@
 
 #include <string>
 #include <memory>
-#include "Chess/Core/Board.h"
+#include "Core/Board.h"
 
 class Pieces;
 

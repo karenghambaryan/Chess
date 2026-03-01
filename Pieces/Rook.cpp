@@ -1,5 +1,5 @@
 #include "Rook.h"
-#include "Chess/Core/Board.h"
+#include "Core/Board.h"
 
 char Rook::getSymbol() const
 {

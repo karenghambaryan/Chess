@@ -1,6 +1,7 @@
 #include "Board.h"
-#include "Pieces.h"
+#include "Pieces/Pieces.h"
 #include <iostream>
+#include <cmath>
 
 Board::Board()
 {
@@ -30,7 +31,7 @@ void Board::setPiece(const Position& position,std::unique_ptr<Pieces> piece)
         m_board[position.row][position.col] = std::move(piece);
     }
 }
-void Board::movePiece(const Position& from,Const Position& to)
+void Board::movePiece(const Position& from, const Position& to)
 {
     if(isInside(from) && isInside(to))
     {
@@ -54,7 +55,7 @@ Position Board::findKing(Color color) const
             Pieces* piece = m_board[row][col].get();
             if(piece && piece->getColor() == color)
             {
-                if(piece->getSymbol() == 'K' || piece->getSymbol == 'k')
+                if(piece->getSymbol() == 'K' || piece->getSymbol() == 'k')
                 {
                     return Position{row,col};
                 }
@@ -80,4 +81,20 @@ void Board::print() const
         }
         std::cout << std::endl;
     }
+}
+
+bool Board::areKingsAdjacent() const
+{
+    Position whiteKing = findKing(Color::White);
+    Position blackKing = findKing(Color::Black);
+    
+    if(whiteKing.row == -1 || blackKing.row == -1)
+    {
+        return false;
+    }
+    
+    int rowDiff = std::abs(whiteKing.row - blackKing.row);
+    int colDiff = std::abs(whiteKing.col - blackKing.col);
+    
+    return (rowDiff <= 1 && colDiff <= 1 && (rowDiff != 0 || colDiff != 0));
 }

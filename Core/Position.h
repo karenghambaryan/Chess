@@ -31,3 +31,4 @@ struct Position
         return true;
     }
 };
+#endif
