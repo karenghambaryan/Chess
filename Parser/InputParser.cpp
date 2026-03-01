@@ -58,7 +58,7 @@ void InputParser::readPieces(Board& board)
         Pieces* existingPiece = board.getPiece(pos);
         if (existingPiece)
         {
-            std::cout << "Square " << square << " is already occupied\n";
+            std::cout << "կա այստեղ " << square << " արդեն խաղաքար\n";
             continue;
         }
 
@@ -70,17 +70,16 @@ Position InputParser::parsePosition(const std::string& square)
 {
     if (square.size() != 2)
     {
-        std::cout << "Invalid square format. Use format like 'a1', 'h8', etc.\n";
+        std::cout << "սխալ։ օգտագործեք այսպես 'a1', 'h8'.\n";
         return Position{ -1, -1 };
     }
 
     char file = square[0];   
     char rank = square[1];   
 
-    // Validate file (a-h) and rank (1-8)
     if (file < 'a' || file > 'h' || rank < '1' || rank > '8')
     {
-        std::cout << "Invalid square. File must be a-h, rank must be 1-8\n";
+        std::cout << "սխալ։ հնարավոր տեղեր 1-8 և a-h\n";
         return Position{ -1, -1 };
     }
 

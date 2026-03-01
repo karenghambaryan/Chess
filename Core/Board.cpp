@@ -92,9 +92,21 @@ bool Board::areKingsAdjacent() const
     {
         return false;
     }
-    
     int rowDiff = std::abs(whiteKing.row - blackKing.row);
     int colDiff = std::abs(whiteKing.col - blackKing.col);
-    
-    return (rowDiff <= 1 && colDiff <= 1 && (rowDiff != 0 || colDiff != 0));
+    if (rowDiff <= 1 && colDiff <= 1)
+    {
+        if (rowDiff == 0 && colDiff == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    else
+    {
+        return false;
+    }
 }

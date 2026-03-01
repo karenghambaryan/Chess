@@ -13,7 +13,7 @@ std::vector<Position> Bishop::getMoves(const Position& from,const Board& board) 
 {
     std::vector<Position> moves;
 
-        const int directions[4][2] =
+    const int directions[4][2] =
     {
         {1,1},    
         {1,-1},   

@@ -9,7 +9,7 @@ std::vector<std::pair<Position,Position>> MoveGenerator::generateAllMoves(Board&
         for(int c=0;c<8;c++)
         {
             Pieces* piece = board.getPiece({r,c});
-            if(!piece || piece->getColor()!=color)
+            if(!piece || piece->getColor()!= color)
             {
                 continue;
             }

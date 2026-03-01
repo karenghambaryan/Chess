@@ -23,16 +23,23 @@ int main()
     std::cout << "\n";
 
     if (CheckDetector::isCheck(board, Color::White))
+    {
         std::cout << "Սպիտակ Արքան շախի տակ է \n";
+    }
 
     if (CheckDetector::isCheck(board, Color::Black))
+    {
         std::cout << "Սև Արքան շախի տակ է \n";
-
+    }
     if (CheckmateDetector::isCheckmate(board, Color::White))
+    {
         std::cout << "Մատ։Սևերը հաղթեցին\n";
+    }
 
     if (CheckmateDetector::isCheckmate(board, Color::Black))
+    {
         std::cout << "Մատ։Սպիտակները հաղթեցին\n";
+    }
 
     return 0;
 }
