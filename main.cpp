@@ -41,5 +41,15 @@ int main()
         std::cout << "Մատ։Սպիտակները հաղթեցին\n";
     }
 
+    if (CheckmateDetector::isCheckmateInOneMove(board, Color::White))
+    {
+        std::cout << "Սպիտակները կարող են մատ անել մեկ քայլով\n";
+    }
+
+    if (CheckmateDetector::isCheckmateInOneMove(board, Color::Black))
+    {
+        std::cout << "Սևերը կարող են մատ անել մեկ քայլով\n";
+    }
+
     return 0;
 }

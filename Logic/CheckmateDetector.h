@@ -8,6 +8,7 @@ class CheckmateDetector
 {
 public:
     static bool isCheckmate(Board& board, Color color);
+    static bool isCheckmateInOneMove(Board& board, Color color);
 };
 
 #endif
