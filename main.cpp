@@ -51,5 +51,15 @@ int main()
         std::cout << "Սևերը կարող են մատ անել մեկ քայլով\n";
     }
 
+    if (CheckmateDetector::isCheckmateInTwoMoves(board, Color::White))
+    {
+        std::cout << "Սպիտակները կարող են մատ անել երկու քայլով\n";
+    }
+
+    if (CheckmateDetector::isCheckmateInTwoMoves(board, Color::Black))
+    {
+        std::cout << "Սևերը կարող են մատ անել երկու քայլով\n";
+    }
+
     return 0;
 }
