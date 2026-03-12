@@ -18,6 +18,9 @@ bool CheckmateDetector::isCheckmate(Board& board, Color color)
         auto captured = std::move(board.m_board[to.row][to.col]);
         auto moving = std::move(board.m_board[from.row][from.col]);
         board.m_board[to.row][to.col] = std::move(moving);
+        
+        board.handlePawnPromotion(to);
+        
         bool stillCheck = CheckDetector::isCheck(board,color);
         moving = std::move(board.m_board[to.row][to.col]);
         board.m_board[from.row][from.col] = std::move(moving);
@@ -44,6 +47,8 @@ bool CheckmateDetector::isCheckmateInOneMove(Board& board, Color color)
         auto moving = std::move(board.m_board[from.row][from.col]);
         board.m_board[to.row][to.col] = std::move(moving);
         board.m_board[from.row][from.col] = nullptr;
+        
+        board.handlePawnPromotion(to);
 
         if (!CheckDetector::isCheck(board, color))
         {
@@ -78,6 +83,8 @@ bool CheckmateDetector::isCheckmateInTwoMoves(Board& board, Color color)
         auto moving = std::move(board.m_board[from.row][from.col]);
         board.m_board[to.row][to.col] = std::move(moving);
         board.m_board[from.row][from.col] = nullptr;
+        
+        board.handlePawnPromotion(to);
 
         Color opponent = opposite(color);
         if (isCheckmate(board, opponent))
@@ -100,6 +107,8 @@ bool CheckmateDetector::isCheckmateInTwoMoves(Board& board, Color color)
             auto oppMoving = std::move(board.m_board[oppFrom.row][oppFrom.col]);
             board.m_board[oppTo.row][oppTo.col] = std::move(oppMoving);
             board.m_board[oppFrom.row][oppFrom.col] = nullptr;
+            
+            board.handlePawnPromotion(oppTo);
 
             if (CheckDetector::isCheck(board, opponent))
             {

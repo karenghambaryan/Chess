@@ -17,6 +17,7 @@ class Board
         Pieces* getPiece(const Position& position) const;
         void setPiece(const Position& position, std::unique_ptr<Pieces> piece);
         void movePiece(const Position& from, const Position& to);
+        void handlePawnPromotion(const Position& position);
         bool isInside(const Position& position) const;
         Position findKing(Color color) const;
         void print() const;
